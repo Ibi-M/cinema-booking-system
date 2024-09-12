@@ -1,0 +1,291 @@
+import random
+from random import randint
+import time
+from time import sleep
+global total
+
+hour = 0
+minute = 0
+c_price = 5
+a_price = 9
+park_price = 2
+
+print ("Hello! Welcome to the Cinebi World online booking system!")
+time.sleep(0.5)
+print ("")
+time.sleep(0.5)
+print ("This is a simple and easy system where you will recieve your virtual ticket in just under 2 minutes where you simply scan at the venue!")
+print ("")
+time.sleep(1)
+print ("This cinema is open 24 hours a day, 7 days a week!")
+print ("")
+time.sleep(1)
+print ("Therefore, you can watch absolutely ANY movie you want at ANY day and time!!")
+time.sleep(1)
+print ("************************************************************")
+print ('\033[1;4m'    +'            PRICES LIST FOR CINIBI CINEMA 2023             ' + '\033[0m')
+print ("")
+print ('\033[1;4m' + 'Price per Child' + '\033[0m', "= £5")
+print ('\033[1;4m' + 'Price per Adult' + '\033[0m', "= £9")
+print ("")
+print ('\033[1;4m' + 'Parking Price' + '\033[0m', "= £2")
+print ("")
+print ("************************************************************")
+time.sleep(2)
+
+print ("Please answer these questions honestly as there will be check-in guards by the entrance!")
+print ("")
+
+ready = input("Are you ready?")
+time.sleep(1)
+print ("")
+
+def movie():
+  global movie
+  movie = input ("1) What movie would you like to watch?")
+  return movie
+
+def time_check():
+  
+  if chosen_time == "morning":
+    hour = random.randrange(6,11)
+    minute = random.randrange(0,55, 5)
+    
+  elif chosen_time == "afternoon":
+    hour = random.randrange(12,16)
+    minute = random.randrange(0,55, 5)
+
+  elif chosen_time =="evening":
+    hour = random.randrange(17,22)
+    minute = random.randrange(0,55, 5) 
+    
+  elif chosen_time == "nightowl":
+    hour = random.randrange(0,5) or 23
+    minute = random.randrange(0,55, 5)
+
+def time():
+  print ("")
+  print ("7) At what time do you want to watch ", movie,"?")
+  print ("")
+  print ("You have the options of:")
+  print ("- Morning")
+  print ("- Afternoon")
+  print ("- Evening")
+  print ("- Nightowl")
+  print ("")
+  print ("PLEASE INPUT YOUR ANSWER ALL IN LOWERCASE LETTERS OTHERWISE THE SYSTEM WOULD NOT WORK PROPERLY!")
+  chosen_time = input()
+  global hour
+  global minute
+  
+  while chosen_time != "morning" or "afternoon" or "evening" or "nightowl":
+    
+    if chosen_time == "morning":
+      hour = random.randrange(6,11)
+      minute = random.randrange(0,55, 5)
+      break
+    elif chosen_time == "afternoon":
+      hour = random.randrange(12,16)
+      minute = random.randrange(0,55, 5)
+      break
+    elif chosen_time =="evening":
+      hour = random.randrange(17,22)
+      minute = random.randrange(0,55, 5) 
+      break
+    elif chosen_time == "nightowl":
+      hour = random.randrange(0,5) or 23
+      minute = random.randrange(0,55, 5)
+      break
+    else:
+      print ("Type it again! Tch Tch!!")
+      chosen_time = input()
+
+  
+def child_total(child):
+  global child_total
+  child_total = child * c_price
+  return child_total
+
+def adult_total(adult):
+  global adult_total
+  adult_total = adult * a_price
+  return adult_total
+
+def parking():
+  global park_price
+  print ("")
+  print ("6) Would you like parking?")
+  print ("It costs £2 extra...")
+  parking = input()
+  while parking != "yes" or "no":
+    if parking == "yes":
+      park_price = 2
+      break
+    elif parking == "no":
+      park_price = 0
+      break
+    else:
+      print ("That is not a valid answer! Type 'yes' or 'no'...")
+      parking = input()
+    
+    
+def total_cost():
+  global total
+  total = adult_total + child_total + park_price 
+    
+movie()
+
+print ("")
+print ("2) What day do you want to watch", movie,"?")
+print ("")
+print ("Input like this: ")
+print ("e.g: 01 or 11")
+day = int(input())
+
+print ("")
+print ("3) What month do you want to watch", movie,"?")
+print ("")
+print ("Input like this: ")
+print ("e.g: 01 or 11")
+month = int(input())
+
+child = int(input("4) How many children are going?"))
+print ("")
+adult = int(input("5) How many adults are going?"))
+
+child_total(child)
+adult_total(adult)
+
+parking()
+total_cost()
+
+
+time()
+
+print ("************************************************************")
+print ('\033[1;4m'    +'                    PRICES LIST SUMMARY                     ' + '\033[0m')
+print ("")
+print ('\033[1;4m' + 'Chosen Movie:' + '\033[0m',movie)
+print ('\033[1;4m' + 'Chosen Date:' + '\033[0m', day,"/",month,"/ 2023")
+print ('\033[1;4m' + 'Chosen Time:' + '\033[0m',hour,":",minute)
+print ("")
+print ('\033[1;4m' + 'Child Total Price =' + '\033[0m', "£",child_total)
+print ('\033[1;4m' + 'Adult Total Price =' + '\033[0m', "£",adult_total)
+print ("")
+print ('\033[1;4m' + 'Parking Price =' + '\033[0m', "£",park_price)
+print ("")
+print ('\033[1;4m' + 'Total Price =' + '\033[0m', "£",total)
+print ("************************************************************")
+
+confirmation = input("Is this correct?")
+
+if confirmation == "yes":
+  print ("Show this to the Check-in guard when you arrive!")
+  print ("Thanks for booking with Cinibi Cinema!")
+  print ("We hope you enjoy your visit at",day,"/",month,"/ 2023!")
+    
+while confirmation != "yes":
+  if confirmation == "yes":
+    exit()
+    print ("Show this to the Check-in guard when you arrive!")
+    print ("Thanks for booking with Cinibi Cinema!")
+    print ("We hope you enjoy your visit at",day,"/",month,"/ 2023!")
+  else:
+    print ("")
+    print ("What would you like to change with your final receipt?")
+    print ("")
+    print ("- The name of the movie?")
+    print ("Just simply input 'name of movie'")
+    print ("")
+    print ("- The date?")
+    print ("Just simply input 'date'")
+    print ("")
+    print ("- The time?")
+    print ("Just simply input 'time'")
+    print ("")
+    print ("- The child price?")
+    print ("Just simply input 'child price'")
+    print ("")
+    print ("- The adult price?")
+    print ("Just simply input 'adult price'")
+    print ("")
+    print ("- The parking?")
+    print ("Just simply input 'parking'")
+    mistake = input()
+    
+    if mistake == "name of movie":
+      print("")
+      movie = input ("What movie would you like to watch?")
+      print ("")
+
+    elif mistake == "date":
+      print ("")
+      print ("What day do you want to watch", movie,"?")
+      print ("")
+      print ("Input like this: ")
+      print ("e.g: 01 or 11")
+      day = int(input())
+      print ("What month do you want to watch", movie,"?")
+      print ("")
+      print ("Input like this: ")
+      print ("e.g: 01 or 11")
+      month = int(input())
+      
+    elif mistake == "time":
+      print ("")
+      print ("Do not worry as there are plenty of times with our amazing range of over 50 screens!!")
+      print ("")
+      time()
+      print ("")
+      
+    elif mistake == "child price":
+      child = int(input("How many children are going?"))
+      print ("")
+      
+    elif mistake == "adult price":
+      adult = int(input("How many adults are going?"))
+      print ("")
+      
+    elif mistake == "parking":
+      print ("")
+      print (" Would you like parking?")
+      print ("It costs £2 extra...")
+      parking = input()
+      while parking != "yes" or "no":
+        if parking == "yes":
+          park_price = 2
+          break
+        elif parking == "no":
+          park_price = 0
+          break
+      else:
+        print ("That is not a valid answer! Type 'yes' or 'no'...")
+        parking = input()
+      park_price
+      
+  print ("Anything else you would like to change?")
+  print ("Input: 'yes' or 'no'")
+  final = input()
+  
+  if final == "no":
+    total = child_total + adult_total + park_price
+    print ("Show this to the Check-in guard when you arrive!")
+    print ("************************************************************")
+    print ('\033[1;4m'    +'                    PRICES LIST SUMMARY                     ' + '\033[0m')
+    print ("")
+    print ('\033[1;4m' + 'Chosen Movie:' + '\033[0m',movie)
+    print ('\033[1;4m' + 'Chosen Date:' + '\033[0m', day,"/",month,"/ 2023")
+    print ('\033[1;4m' + 'Chosen Time:' + '\033[0m',hour,":",minute)
+    print ("")
+    print ('\033[1;4m' + 'Child Total Price =' + '\033[0m', "£",child_total)
+    print ('\033[1;4m' + 'Adult Total Price =' + '\033[0m', "£",adult_total)
+    print ("")
+    print ('\033[1;4m' + 'Parking Price =' + '\033[0m', "£",park_price)
+    print ("")
+    print ('\033[1;4m' + 'Total Price =' + '\033[0m', "£",total)
+    print ("************************************************************")
+
+    print ("Thanks for booking with Cinibi Cinema!")
+    print ("We hope you will enjoy your visit on ",day,"/",month,"/ 2023, at", hour,":",minute)
+    exit()
+  
