@@ -1,4 +1,5 @@
 import time
+import random
 
 class color:
     PURPLE = '\033[95m'
@@ -43,6 +44,68 @@ print (color.BOLD,color.UNDERLINE,"                 |","Before 5PM | After 5PM |
 for item in priceList:
     print ("|", item[0]," "*(15-len(item[0])),"|",
            item[1]," "*(9-len(item[1])),"|",
-           item[2]," "*(7-len(str(item[2]))),"|")
+           item[2]," "*(7-len(str(item[2]))),"|",)
+print (color.END)
+
+
+apb5 = 7.40
+cpb5 = 5.40
+stpb5 = 5.90
+spb5 = 5.90
+fpb5 = 22.60
+
+apa5 = 8.90
+cpa5 = 6.40
+stpa5 = 6.90
+spa5 = 6.90
+fpa5 = 27.60
+
+tuesday_p = 5.40
+
+days = ["monday", "tuesday", "wednesday","thursday","friday","saturday","sunday"]
+
+day = ""
+
+while day not in days:
+    day = input("What day would you like to watch the movie?")
+    day = day.lower()
+    print ("Invalid Input!")
+
+print ("")
+print ("At what time do you want to watch the movie?")
+print ("")
+print ("You have the options of:")
+print ("- Morning")
+print ("- Afternoon")
+print ("- Evening")
+print ("- Nightowl")
+print ("")
+print ("PLEASE INPUT YOUR ANSWER ALL IN LOWERCASE LETTERS OTHERWISE THE SYSTEM WOULD NOT WORK PROPERLY!")
+
+chosen_time = input()
+global hour
+global minute
+  
+while chosen_time != "morning" or "afternoon" or "evening" or "nightowl":
     
-    
+    if chosen_time == "morning":
+        hour = random.randrange(6,11)
+        minute = random.randrange(0,55, 5)
+        break
+    elif chosen_time == "afternoon":
+        hour = random.randrange(12,16)
+        minute = random.randrange(0,55, 5)
+        break
+    elif chosen_time =="evening":
+        hour = random.randrange(17,22)
+        minute = random.randrange(0,55, 5) 
+        break
+    elif chosen_time == "nightowl":
+        hour = random.randrange(0,5) or 23
+        minute = random.randrange(0,55, 5)
+        break
+    else:
+        print ("Invalid Input! Type it again!")
+        chosen_time = input()
+
+
