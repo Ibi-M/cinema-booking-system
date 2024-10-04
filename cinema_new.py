@@ -1,3 +1,4 @@
+
 import time
 import random
 
@@ -15,7 +16,7 @@ class color:
     colors = [PURPLE,CYAN,DARKCYAN,BLUE,GREEN,YELLOW,RED]
 
 
-print ("Hello! Welcome to the Cinebi World online booking system!")
+print ("Hello! Welcome to the Cinibi World online booking system!")
 time.sleep(0.5)
 print ("")
 time.sleep(0.5)
@@ -32,6 +33,7 @@ print ("****************************************************")
 print ('\033[1;4m'    +'         PRICES LIST FOR CINIBI CINEMA 2024         ' + '\033[0m')
 print ("")
 
+
 priceList = [["Adults","£7.40","£8.90   "],
              ["Children","£5.40","£6.40   "],
              ["Students","£5.90","£6.90   "],
@@ -40,7 +42,7 @@ priceList = [["Adults","£7.40","£8.90   "],
              ["","","  "],
              ["Tuesday Offer","£5.40","£5.40   "],]
 
-print (color.BOLD,color.UNDERLINE,"                 |","Before 5PM | After 5PM |")
+print (color.BOLD,color.UNDERLINE,"                 |","Before 5PM | After 5PM |",color.END)
 for item in priceList:
     print ("|", item[0]," "*(15-len(item[0])),"|",
            item[1]," "*(9-len(item[1])),"|",
@@ -80,7 +82,6 @@ print ("- Afternoon")
 print ("- Evening")
 print ("- Nightowl")
 print ("")
-print ("PLEASE INPUT YOUR ANSWER ALL IN LOWERCASE LETTERS OTHERWISE THE SYSTEM WOULD NOT WORK PROPERLY!")
 
 chosen_time = input()
 global hour
@@ -107,5 +108,57 @@ while chosen_time != "morning" or "afternoon" or "evening" or "nightowl":
     else:
         print ("Invalid Input! Type it again!")
         chosen_time = input()
+
+
+adults = int(input("How many adult tickets?  "))
+children = int(input("How many children tickets?  "))
+students = int(input("How many student tickets? "))
+seniors = int(input("How many senior tickets? "))
+family = int(input("How many family tickets? "))
+
+if day == "tuesday":
+    offer = 5.40
+    adult_price = round((adults * offer),2)
+    child_price = round ((children * offer),2)
+    student_price = round ((students * offer),2)
+    senior_price = round ((seniors * offer),2)
+    family_price = round ((family * offer),2)
+
+if chosen_time == "morning" or "afternoon":
+    adult_price = round((adults * apb5),2)
+    child_price = round ((children * cpb5),2)
+    student_price = round ((students * stpb5),2)
+    senior_price = round ((seniors * spb5),2)
+    family_price = round ((family * fpb5),2)
+
+elif chosen_time == "evening" or "nightowl":
+    adult_price = round ((adults * apb5),2)
+    child_price = round ((children * cpb5),2)
+    student_price = round ((students * stpb5),2)
+    senior_price = round ((seniors * spb5),2)
+    family_price = round ((family * fpb5),2)
+
+print ("")
+print ("Would you like parking?")
+print ("It costs £2 extra...")
+parking = input()
+while parking != "yes" or "no":
+    if parking == "yes":
+      park_price = 2
+      break
+    elif parking == "no":
+      park_price = 0
+      break
+    else:
+      print ("That is not a valid answer! Type 'yes' or 'no'...")
+      parking = input()
+
+total = adult_price + child_price + student_price + senior_price + family_price + park_price
+    
+
+
+
+
+
 
 
