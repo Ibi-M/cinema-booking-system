@@ -69,7 +69,7 @@ tuesday_p = 5.40
 movie = input ("What movie would you like to watch? ")
 movie = movie.title()
 
-days = ["monday", "tuesday", "wednesday","thursday","friday","saturday","sunday"]
+days = ["Monday", "Tuesday", "Wednesday","Thursday","Friday","Saturday","Sunday"]
 
 day = ""
 
@@ -186,35 +186,42 @@ while index2 < 5:
 
 screen = random.randint(1,10)
 screen = str(screen)
+
 gate = ["north", "west", "east", "south"]
 entrance = random.choice(gate)
+entrance = entrance.title()
 
 movie_final = color.BOLD + color.UNDERLINE + color.YELLOW + "Chosen Movie" + color.END +color.YELLOW
 day_final = color.BOLD + color.UNDERLINE + color.RED +"Chosen Day" + color.END + color.RED
 time_final = color.BOLD + color.UNDERLINE + color.CYAN + "Chosen Time" + color.END + color.CYAN
-blank1_final = color.BOLD + color.UNDERLINE + color.RED + "____________________" + color.END + color.RED
+blank1_final = color.BOLD + color.UNDERLINE + color.WHITE + "____________________" + color.END + color.WHITE
 child_final = color.BOLD + color.UNDERLINE + color.PURPLE + "Child Total Price" + color.END + color.PURPLE
 adult_final = color.BOLD + color.UNDERLINE + color.GREEN +"Adult Total Price" + color.END + color.GREEN
 student_final = color.BOLD + color.UNDERLINE + color.BLUE + "Student Total Price" + color.END + color.BLUE
 senior_final = color.BOLD + color.UNDERLINE + color.DARKCYAN + "Senior Total Price" + color.END + color.DARKCYAN
 family_final = color.BOLD + color.UNDERLINE + color.MAGENTA + "Family Total Price" + color.END + color.MAGENTA
 parking_final = color.BOLD + color.UNDERLINE + color.RED + "Parking Price" + color.END + color.RED
-blank_final = color.BOLD + color.UNDERLINE + color.RED + "--------------------" + color.END + color.RED
+blank_final = color.BOLD + color.WHITE + color.WHITE + "--------------------" + color.END + color.WHITE
 total_final = color.BOLD + color.UNDERLINE + color.WHITE +  "Total Price" + color.END + color.WHITE
 
-summary = [[movie_final,movie, ("Screen "+screen),color.END],
-             [day_final,day, " ",color.END],
-             [time_final,timing," ",color.END],
-             [blank1_final,"________","____________________"],
-             [child_final,("£"+prices[0]),(people[0] +" x child(ren)"),color.END],
-             [adult_final,("£"+prices[1]), (people[1] +" x adult(s)"),color.END],
-             [student_final,("£"+prices[2]), (people[2] +" x student(s)"),color.END],
-             [senior_final,("£"+prices[3]), (people[3] +" x senior(s)"),color.END],
-             [blank1_final,"________","____________________"],
-             [family_final,("£"+prices[4]), (people[4] +" x family"),color.END],
-             [parking_final,("£"+park_price), ("Entry: " + entrance + " entrance"),color.END],
-             [blank_final,"------- ","--------------------"],
-             [total_final,("£"+prices[5])," "]]
+column_width = 30
+column_width2 = 10
+column_width3 = 22
+end = color.END
+
+summary = [[movie_final.center(column_width), movie.center(column_width2), ("Screen " + screen).center(column_width3),color.END],
+           [day_final.center(column_width), day.center(column_width2), " ".center(column_width3),color.END],
+           [time_final.center(column_width), timing.center(column_width2), " ".center(column_width3),color.END],
+           [blank1_final.center(column_width), "________".center(column_width2), "_____________________".center(column_width3)],
+           [child_final.center(column_width), ("£" + prices[0]).center(column_width2), (people[0] + " x child(ren)").center(column_width3),color.END],
+           [adult_final.center(column_width), ("£" + prices[1]).center(column_width2), (people[1] + " x adult(s)").center(column_width3),color.END],
+           [student_final.center(column_width), ("£" + prices[2]).center(column_width2), (people[2] + " x student(s)").center(column_width3),color.END],
+           [senior_final.center(column_width), ("£" + prices[3]).center(column_width2), (people[3] + " x senior(s)").center(column_width3),color.END],
+           [family_final.center(column_width), ("£" + prices[4]).center(column_width2), (people[4] + " x family").center(column_width3),color.END],
+           [blank1_final.center(column_width), "________".center(column_width2), "_____________________".center(column_width3)],
+           [parking_final.center(column_width), ("£" + park_price).center(column_width2), ("Entry: " + entrance + " Entrance").center(column_width3),color.END],
+           [blank_final.center(column_width), "------- ".center(column_width2), "---------------------".center(column_width3)],
+           [total_final.center(column_width), ("£" + prices[5]).center(column_width2), " ".center(column_width3)]]
 
 print ("*************************"+color.BOLD,color.UNDERLINE+"RECEIPT" + color.END +"************************")
 print (color.UNDERLINE,"                                                          ",color.END)
