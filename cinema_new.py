@@ -15,41 +15,57 @@ class color:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     END = '\033[0m'
-    colors = [PURPLE,CYAN,DARKCYAN,BLUE,GREEN,YELLOW,RED]
 
 
 print ("Hello! Welcome to the Cinibi World online booking system!")
 time.sleep(0.5)
 print ("")
 time.sleep(0.5)
-print ("This is a simple and easy system where you will recieve your virtual ticket in just under 2 minutes where you simply scan at the venue!")
-print ("")
-time.sleep(1)
 print ("This cinema is open 24 hours a day, 7 days a week!")
 print ("")
 time.sleep(1)
-print ("Therefore, you can watch absolutely ANY movie you want at ANY day and time!!")
+print ("Therefore, you can watch absolutely ANY movie you want at ANY day and time!")
 time.sleep(1)
 print("")
 print ("****************************************************")
 print ('\033[1;4m'    +'         PRICES LIST FOR CINIBI CINEMA 2024         ' + '\033[0m')
 print ("")
 
+a = color.BOLD + color.UNDERLINE + color.GREEN + "Adults" + color.END + color.GREEN
+c  = color.BOLD + color.UNDERLINE + color.PURPLE + "Children" + color.END + color.PURPLE
+st = color.BOLD + color.UNDERLINE + color.BLUE + "Students" + color.END + color.BLUE
+s = color.BOLD + color.UNDERLINE + color.DARKCYAN + "Seniors" + color.END + color.DARKCYAN
+f = color.BOLD + color.UNDERLINE + color.MAGENTA + "Family" + color.END + color.MAGENTA
+gap = color.BOLD + color.UNDERLINE + color.WHITE + "-------------" + color.END + color.WHITE
+to = color.BOLD + color.UNDERLINE + color.YELLOW + "Tuesday Offer" + color.END + color.YELLOW
 
-priceList = [["Adults","£7.40","£8.90   "],
-             ["Children","£5.40","£6.40   "],
-             ["Students","£5.90","£6.90   "],
-             ["Seniors","£5.90","£6.90   "],
-             ["Family","£22.60","£27.60  "],
-             ["","","  "],
-             ["Tuesday Offer","£5.40","£5.40   "],]
+priceList = [
+    [a, "£7.40", "£8.90"],
+    [c, "£5.40", "£6.40"],
+    [st, "£5.90", "£6.90"],
+    [s, "£5.90", "£6.90"],
+    [f, "£22.60", "£27.60"],
+    [gap, "---------", "--------"],
+    [to, "£5.40", "£5.40"]
+]
 
-print (color.BOLD,color.UNDERLINE,"                 |","Before 5PM | After 5PM |",color.END)
+# Column widths
+col1_width = 35
+col2_width = 11  # Adjusted width for prices
+col3_width = 11  # Adjusted width for prices
+
+# Header
+print(color.BOLD, color.UNDERLINE, " " * 13, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", color.END)
+
+# Centered content
 for item in priceList:
-    print ("|", item[0]," "*(15-len(item[0])),"|",
-           item[1]," "*(9-len(item[1])),"|",
-           item[2]," "*(7-len(str(item[2]))),"|",)
-print (color.END)
+    col1_text = item[0].center(col1_width)
+    col2_text = item[1].center(col2_width)
+    col3_text = item[2].center(col3_width)
+    
+    print("|", col1_text, "|", col2_text, "|", col3_text, "|")
+
+print(color.END)
 
 
 apb5 = 7.40
@@ -229,11 +245,3 @@ for item in summary:
     print ("|", item[0]," "*(42-len(item[0])),"|",
            item[1]," "*(8-len(item[1])),"|",
            item[2]," "*(20-len(str(item[2]))),"|",)
-
-
-
-
-
-
-
-

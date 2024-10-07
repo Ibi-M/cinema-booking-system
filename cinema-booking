@@ -290,3 +290,16 @@ while confirmation != "yes":
     print ("We hope you will enjoy your visit on ",day,"/",month,"/ 2023, at", hour,":",minute)
     exit()
   
+
+movie_final = color.BOLD + color.UNDERLINE + color.YELLOW + "Chosen Movie" + color.END +color.YELLOW
+day_final = color.BOLD + color.UNDERLINE + color.RED +"Chosen Day" + color.END + color.RED
+time_final = color.BOLD + color.UNDERLINE + color.CYAN + "Chosen Time" + color.END + color.CYAN
+blank1_final = color.BOLD + color.UNDERLINE + color.WHITE + "____________________" + color.END + color.WHITE
+child_final = color.BOLD + color.UNDERLINE + color.PURPLE + "Child Total Price" + color.END + color.PURPLE
+adult_final = color.BOLD + color.UNDERLINE + color.GREEN +"Adult Total Price" + color.END + color.GREEN
+student_final = color.BOLD + color.UNDERLINE + color.BLUE + "Student Total Price" + color.END + color.BLUE
+senior_final = color.BOLD + color.UNDERLINE + color.DARKCYAN + "Senior Total Price" + color.END + color.DARKCYAN
+family_final = color.BOLD + color.UNDERLINE + color.MAGENTA + "Family Total Price" + color.END + color.MAGENTA
+parking_final = color.BOLD + color.UNDERLINE + color.RED + "Parking Price" + color.END + color.RED
+blank_final = color.BOLD + color.WHITE + color.WHITE + "--------------------" + color.END + color.WHITE
+total_final = color.BOLD + color.UNDERLINE + color.WHITE +  "Total Price" + color.END + color.WHITE
