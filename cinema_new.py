@@ -64,6 +64,8 @@ fpa5 = 27.60
 
 tuesday_p = 5.40
 
+movie = input ("What movie would you like to watch? ")
+
 days = ["monday", "tuesday", "wednesday","thursday","friday","saturday","sunday"]
 
 day = ""
@@ -71,7 +73,8 @@ day = ""
 while day not in days:
     day = input("What day would you like to watch the movie?")
     day = day.lower()
-    print ("Invalid Input!")
+    if day not in days:
+         print ("Invalid Input!")
 
 print ("")
 print ("At what time do you want to watch the movie?")
@@ -154,7 +157,49 @@ while parking != "yes" or "no":
       parking = input()
 
 total = adult_price + child_price + student_price + senior_price + family_price + park_price
+park_price = str(park_price)
     
+print ("Your total is: £", total)
+
+
+hour = str(hour)
+minute = str(minute)
+timing = hour+":"+minute
+
+prices = [child_price, adult_price, student_price, senior_price, family_price]
+index = 0
+while index < 5:
+    prices[index] = str(prices[index])
+    index = index + 1
+
+
+people = [children, adults, students, seniors, family]
+index2 = 0
+while index2 < 5:
+    people[index2] = str(people[index2])
+    index2 = index2 + 1
+
+screen = random.randint(1,10)
+entrance = random.randrange("north", "west", "east", "south")
+
+summary = [["Chosen Movie",movie, screen],
+             ["Chosen Date",day, " "],
+             ["Chosen Time",timing," " ],
+
+             ["Child Total Price",("£"+prices[0]), (people[0] +" x child(ren)")],
+             ["Adult Total Price",("£"+prices[1]), (people[1] +" x adult(s)")],
+             ["Student Total Price",("£"+prices[2]), (people[2] +" x student(s)")],
+             ["Senior Total Price",("£"+prices[3]), (people[3] +" x senior(s)")],
+             ["Family Total Price",("£"+prices[4]), (people[4] +" x family")],
+             ["Parking Price",("£"+park_price)]]
+
+print (color.BOLD,color.UNDERLINE,"**************** RECEIPT ***************",color.END)
+for item in summary:
+    print ("|", item[0]," "*(20-len(item[0])),"|",
+           item[1]," "*(9-len(item[1])),"|",
+           item[2]," "*(15-len(str(item[2]))),"|",)
+
+print (color.END)
 
 
 

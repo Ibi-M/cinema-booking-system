@@ -39,6 +39,7 @@ print ("")
 ready = input("Are you ready?")
 time.sleep(1)
 print ("")
+           
 
 def movie():
   global movie
