@@ -16,7 +16,7 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-
+print ("")
 print ("Hello! Welcome to the Cinibi World online booking system!")
 time.sleep(0.5)
 print ("")
@@ -51,15 +51,15 @@ priceList = [
     [to, "£5.40", "£5.40"]
 ]
 
-# Column widths
-col1_width = 39
-col2_width = 11  # Adjusted width for prices
-col3_width = 11  # Adjusted width for prices
 
-# Header
+col1_width = 39
+col2_width = 11 
+col3_width = 11  
+
+
 print(color.BOLD, color.UNDERLINE, " " * 17, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", color.END)
 
-# Centered content
+
 for item in priceList:
     col1_text = item[0].center(col1_width)
     col2_text = item[1].center(col2_width)
@@ -87,7 +87,7 @@ tuesday_p = 5.40
 movie = input ("What movie would you like to watch? ")
 movie = movie.title()
 
-days = ["Monday", "Tuesday", "Wednesday","Thursday","Friday","Saturday","Sunday"]
+days = ["Monday", "tuesday", "Wednesday","Thursday","Friday","Saturday","Sunday"]
 
 day = ""
 
@@ -95,7 +95,9 @@ while day not in days:
     print ("")
     day = input("What day would you like to watch the movie?")
     day = day.lower()
-    day = day.title()
+    if day != "tuesday":
+        day = day.title()
+    
     if day not in days:
          print ("Invalid Input!")
 
@@ -136,12 +138,67 @@ while chosen_time != "morning" or "afternoon" or "evening" or "nightowl":
         print ("Invalid Input! Type it again!")
         chosen_time = input()
 
+cont1 = False
+cont2 = False
+cont3 = False
 
-adults = int(input("How many adult tickets?  "))
-children = int(input("How many children tickets?  "))
-students = int(input("How many student tickets? "))
-seniors = int(input("How many senior tickets? "))
-family = int(input("How many family tickets? "))
+while cont1 != True and cont2 != True and cont3 != True:
+
+    family_book = input("Are you booking for a family (Only 2 Adults & 2 Children; students/seniors not eligble for family)? ")
+    family_book = family_book.lower()
+
+    if family_book == "yes":
+        family = int(input("How many family tickets? (£22.60 for one family of 4)  "))
+        cont1 = True
+
+        while cont2 == False:
+            extra = input("Are you booking for any more individual adults or children? ")
+            if extra == "yes":
+                adults = int(input("How many adult tickets? "))
+                children = int(input("How many children tickets?  "))
+                cont2 = True
+            elif extra == "no":
+                adults = 0
+                children = 0
+                cont2 = True
+            else:
+                cont2 = False
+                print ("Invalid Input!")
+                print ("")
+
+        while cont3 == False:
+            others = input("Are you booking for a student or a senior too?")
+            if others == "yes":
+                students = int(input("How many student tickets? "))
+                seniors = int(input("How many senior tickets? "))
+                cont3 = True
+            elif others == "no":
+                cont3 = True
+                students = 0
+                seniors = 0
+            else:
+                cont3 = False
+                print ("Invalid Input!")
+                print ("")
+
+    elif family_book == "no":
+        adults = int(input("How many adult tickets? "))
+        children = int(input("How many children tickets?  "))
+        students = int(input("How many student tickets? "))
+        seniors = int(input("How many senior tickets? "))
+        family = 0
+        cont1 = True
+        cont2 = True
+        cont3 = True
+
+    else:
+        cont1 = False
+        cont2 = False
+        cont3 = False
+        print ("Invalid Input!")
+        print ("")
+
+offered = " No discount incl."
 
 if day == "tuesday":
     offer = 5.40
@@ -150,20 +207,25 @@ if day == "tuesday":
     student_price = round ((students * offer),2)
     senior_price = round ((seniors * offer),2)
     family_price = round ((family * offer),2)
+    day = day.title()
+    offered = "Tuesday Offer incl."
 
-if chosen_time == "morning" or "afternoon":
-    adult_price = round((adults * apb5),2)
-    child_price = round ((children * cpb5),2)
-    student_price = round ((students * stpb5),2)
-    senior_price = round ((seniors * spb5),2)
-    family_price = round ((family * fpb5),2)
+else:
+    offered = "No discount incl."
 
-elif chosen_time == "evening" or "nightowl":
-    adult_price = round ((adults * apb5),2)
-    child_price = round ((children * cpb5),2)
-    student_price = round ((students * stpb5),2)
-    senior_price = round ((seniors * spb5),2)
-    family_price = round ((family * fpb5),2)
+    if chosen_time == "morning" or "afternoon":
+        adult_price = round((adults * apb5),2)
+        child_price = round ((children * cpb5),2)
+        student_price = round ((students * stpb5),2)
+        senior_price = round ((seniors * spb5),2)
+        family_price = round ((family * fpb5),2)
+
+    elif chosen_time == "evening" or "nightowl":
+        adult_price = round ((adults * apa5),2)
+        child_price = round ((children * cpa5),2)
+        student_price = round ((students * stpa5),2)
+        senior_price = round ((seniors * spa5),2)
+        family_price = round ((family * fpa5),2)
 
 print ("")
 print ("Would you like parking?")
@@ -189,7 +251,7 @@ print ("Your total is: £", total_price)
 
 hour = str(hour)
 minute = str(minute)
-timing = hour+":"+minute
+timing = hour + ":"+minute
 
 prices = [child_price, adult_price, student_price, senior_price, family_price,total_price]
 index = 0
@@ -210,6 +272,7 @@ screen = str(screen)
 gate = ["north", "west", "east", "south"]
 entrance = random.choice(gate)
 entrance = entrance.title()
+
 
 movie_final = color.BOLD + color.UNDERLINE + color.YELLOW + "Chosen Movie" + color.END +color.YELLOW
 day_final = color.BOLD + color.UNDERLINE + color.RED +"Chosen Day" + color.END + color.RED
@@ -241,7 +304,7 @@ summary = [[movie_final.center(column_width), movie.center(column_width2), ("Scr
            [blank1_final.center(column_width), "________".center(column_width2), "_____________________".center(column_width3)],
            [parking_final.center(column_width), ("£" + park_price).center(column_width2), ("Entry: " + entrance + " Entrance").center(column_width3),color.END],
            [blank_final.center(column_width), "------- ".center(column_width2), "---------------------".center(column_width3)],
-           [total_final.center(column_width), ("£" + prices[5]).center(column_width2), " ".center(column_width3)]]
+           [total_final.center(column_width), ("£" + prices[5]).center(column_width2), offered.center(column_width3)]]
 
 print ("****************************"+color.BOLD,color.UNDERLINE+"RECEIPT" + color.END +"***************************")
 print (color.UNDERLINE,"                                                          ",color.END)
