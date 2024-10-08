@@ -35,8 +35,9 @@ a = color.BOLD + color.UNDERLINE + color.GREEN + "Adults" + color.END + color.GR
 c  = color.BOLD + color.UNDERLINE + color.PURPLE + "Children" + color.END + color.PURPLE
 st = color.BOLD + color.UNDERLINE + color.BLUE + "Students" + color.END + color.BLUE
 s = color.BOLD + color.UNDERLINE + color.DARKCYAN + "Seniors" + color.END + color.DARKCYAN
-f = color.BOLD + color.UNDERLINE + color.MAGENTA + "Family" + color.END + color.MAGENTA
-gap = color.BOLD + color.UNDERLINE + color.WHITE + "-------------" + color.END + color.WHITE
+f = color.BOLD + color.UNDERLINE + color.RED + "Family" + color.END + color.RED
+f2 = color.BOLD + color.UNDERLINE + color.RED + "(2 A and 2 Child)" + color.END + color.RED
+gap = color.BOLD + color.UNDERLINE + color.WHITE + "-----------------" + color.END + color.WHITE
 to = color.BOLD + color.UNDERLINE + color.YELLOW + "Tuesday Offer" + color.END + color.YELLOW
 
 priceList = [
@@ -45,17 +46,18 @@ priceList = [
     [st, "£5.90", "£6.90"],
     [s, "£5.90", "£6.90"],
     [f, "£22.60", "£27.60"],
-    [gap, "---------", "--------"],
+    [f2,"",""],
+    [gap, "-----------", "-----------"],
     [to, "£5.40", "£5.40"]
 ]
 
 # Column widths
-col1_width = 35
+col1_width = 39
 col2_width = 11  # Adjusted width for prices
 col3_width = 11  # Adjusted width for prices
 
 # Header
-print(color.BOLD, color.UNDERLINE, " " * 13, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", color.END)
+print(color.BOLD, color.UNDERLINE, " " * 17, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", color.END)
 
 # Centered content
 for item in priceList:
@@ -90,6 +92,7 @@ days = ["Monday", "Tuesday", "Wednesday","Thursday","Friday","Saturday","Sunday"
 day = ""
 
 while day not in days:
+    print ("")
     day = input("What day would you like to watch the movie?")
     day = day.lower()
     day = day.title()
@@ -107,6 +110,7 @@ print ("- Nightowl")
 print ("")
 
 chosen_time = input()
+chosen_time = chosen_time.lower()
 global hour
 global minute
   
@@ -239,7 +243,7 @@ summary = [[movie_final.center(column_width), movie.center(column_width2), ("Scr
            [blank_final.center(column_width), "------- ".center(column_width2), "---------------------".center(column_width3)],
            [total_final.center(column_width), ("£" + prices[5]).center(column_width2), " ".center(column_width3)]]
 
-print ("*************************"+color.BOLD,color.UNDERLINE+"RECEIPT" + color.END +"************************")
+print ("****************************"+color.BOLD,color.UNDERLINE+"RECEIPT" + color.END +"***************************")
 print (color.UNDERLINE,"                                                          ",color.END)
 for item in summary:
     print ("|", item[0]," "*(42-len(item[0])),"|",
