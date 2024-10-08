@@ -104,11 +104,13 @@ while day not in days:
 print ("")
 print ("At what time do you want to watch the movie?")
 print ("")
+print ("Any timing after 5pm is slightly more priced (Have a look at Price List before confirming)")
+print ("")
 print ("You have the options of:")
-print ("- Morning")
-print ("- Afternoon")
-print ("- Evening")
-print ("- Nightowl")
+print ("- Morning (6am to 12am)")
+print ("- Afternoon (12pm to 5pm)")
+print ("- Evening (5pm to 12am)")
+print ("- Nightowl (12am to 6am)")
 print ("")
 
 chosen_time = input()
@@ -127,16 +129,17 @@ while chosen_time != "morning" or "afternoon" or "evening" or "nightowl":
         minute = random.randrange(0,55, 5)
         break
     elif chosen_time =="evening":
-        hour = random.randrange(17,22)
+        hour = random.randrange(17,23)
         minute = random.randrange(0,55, 5) 
         break
     elif chosen_time == "nightowl":
-        hour = random.randrange(0,5) or 23
+        hour = random.randrange(0,5) 
         minute = random.randrange(0,55, 5)
         break
     else:
         print ("Invalid Input! Type it again!")
         chosen_time = input()
+        chosen_time = chosen_time.lower()
 
 cont1 = False
 cont2 = False
@@ -234,8 +237,13 @@ parking = input()
 while parking != "yes" or "no":
     if parking == "yes":
       park_price = 2
+      gate = ["north", "west", "east", "south"]
+      entrance = random.choice(gate)
+      entrance = entrance.title()
+      park = ("Entry: " + entrance + " Entrance")
       break
     elif parking == "no":
+      park = "     "
       park_price = 0
       break
     else:
@@ -269,9 +277,6 @@ while index2 < 5:
 screen = random.randint(1,10)
 screen = str(screen)
 
-gate = ["north", "west", "east", "south"]
-entrance = random.choice(gate)
-entrance = entrance.title()
 
 
 movie_final = color.BOLD + color.UNDERLINE + color.YELLOW + "Chosen Movie" + color.END +color.YELLOW
@@ -302,7 +307,7 @@ summary = [[movie_final.center(column_width), movie.center(column_width2), ("Scr
            [senior_final.center(column_width), ("£" + prices[3]).center(column_width2), (people[3] + " x senior(s)").center(column_width3),color.END],
            [family_final.center(column_width), ("£" + prices[4]).center(column_width2), (people[4] + " x family").center(column_width3),color.END],
            [blank1_final.center(column_width), "________".center(column_width2), "_____________________".center(column_width3)],
-           [parking_final.center(column_width), ("£" + park_price).center(column_width2), ("Entry: " + entrance + " Entrance").center(column_width3),color.END],
+           [parking_final.center(column_width), ("£" + park_price).center(column_width2), park.center(column_width3),color.END],
            [blank_final.center(column_width), "------- ".center(column_width2), "---------------------".center(column_width3)],
            [total_final.center(column_width), ("£" + prices[5]).center(column_width2), offered.center(column_width3)]]
 
