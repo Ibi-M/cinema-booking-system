@@ -2,21 +2,14 @@
 import time
 import random
 
+from colorama import *
+init(autoreset=True)
+
 class color:
-    WHITE   = '\033[37m'
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-    DARKCYAN = '\033[36m'
-    BLUE = '\033[94m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    MAGENTA = '\033[35m'
-    RED = '\033[91m'
-    BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-print ("")
+
 print ("Hello! Welcome to the Cinibi World online booking system!")
 time.sleep(0.5)
 print ("")
@@ -31,14 +24,14 @@ print ("****************************************************")
 print ('\033[1;4m'    +'         PRICES LIST FOR CINIBI CINEMA 2024         ' + '\033[0m')
 print ("")
 
-a = color.BOLD + color.UNDERLINE + color.GREEN + "Adults" + color.END + color.GREEN
-c  = color.BOLD + color.UNDERLINE + color.PURPLE + "Children" + color.END + color.PURPLE
-st = color.BOLD + color.UNDERLINE + color.BLUE + "Students" + color.END + color.BLUE
-s = color.BOLD + color.UNDERLINE + color.DARKCYAN + "Seniors" + color.END + color.DARKCYAN
-f = color.BOLD + color.UNDERLINE + color.RED + "Family" + color.END + color.RED
-f2 = color.BOLD + color.UNDERLINE + color.RED + "(2 A and 2 Child)" + color.END + color.RED
-gap = color.BOLD + color.UNDERLINE + color.WHITE + "-----------------" + color.END + color.WHITE
-to = color.BOLD + color.UNDERLINE + color.YELLOW + "Tuesday Offer" + color.END + color.YELLOW
+a = Style.BRIGHT + color.UNDERLINE + Fore.GREEN + "Adults" + Fore.RESET + color.END + Fore.GREEN
+c  = Style.BRIGHT + color.UNDERLINE + Fore.YELLOW + "Children" + Fore.RESET + color.END + Fore.YELLOW
+st = Style.BRIGHT + color.UNDERLINE + Fore.BLUE + "Students" + Fore.RESET + color.END + Fore.BLUE
+s = Style.BRIGHT + color.UNDERLINE + Fore.CYAN + "Seniors" + Fore.RESET + color.END + Fore.CYAN
+f = Style.BRIGHT + color.UNDERLINE + Fore.RED + "Family" + Fore.RESET + color.END + Fore.RED
+f2 = Style.BRIGHT + color.UNDERLINE + Fore.WHITE + "(2 A and 2 Child)"  + color.END + Fore.RESET + Fore.WHITE
+gap = Style.BRIGHT + color.UNDERLINE + Fore.YELLOW + "-----------------"  + color.END +  Fore.RESET + Fore.YELLOW
+to = Style.BRIGHT + color.UNDERLINE + Fore.CYAN + "Tuesday Offer"  + color.END + Fore.RESET + Fore.CYAN
 
 priceList = [
     [a, "£7.40", "£8.90"],
@@ -52,13 +45,12 @@ priceList = [
 ]
 
 
-col1_width = 39
+col1_width = 44
 col2_width = 11 
 col3_width = 11  
 
 
-print(color.BOLD, color.UNDERLINE, " " * 17, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", color.END)
-
+print(Style.BRIGHT, color.UNDERLINE, " " * 17, "|", "Before 5PM".center(col2_width), "|", "After 5PM".center(col3_width), "|", Fore.RESET)
 
 for item in priceList:
     col1_text = item[0].center(col1_width)
